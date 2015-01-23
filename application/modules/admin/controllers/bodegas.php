@@ -17,6 +17,7 @@ class Bodegas extends MX_Controller {
         
 	public function get_crud()
 	{
+            echo 'Ingresando a la administracion de bodegas';
             $this->config->load('grocery_crud');
             $this->config->set_item('grocery_crud_dialog_forms',true);     
             $crud = new grocery_CRUD();
