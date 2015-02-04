@@ -2,8 +2,8 @@
     RewriteEngine On 
     RewriteCond %{REQUEST_FILENAME} !-f 
     RewriteCond %{REQUEST_FILENAME} !-d 
-    RewriteRule ^(.*)$ /billingsofv1.01_dev/index.php/$1 [L] 
+    RewriteRule ^(.*)$ /billingsof_core/index.php/$1 [L] 
 </IfModule>
 <IfModule !mod_rewrite.c>
-    ErrorDocument 404 /billingsofv1.01_dev/index.php 
+    ErrorDocument 404 /billingsof_core/index.php 
 </IfModule>

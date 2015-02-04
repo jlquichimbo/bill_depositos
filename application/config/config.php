@@ -15,7 +15,7 @@
 |
 */
 //$config['base_url']	= 'http://localhost/billingsoftdemo/coresystem/';
-$config['base_url']	= 'http://'.$_SERVER['HTTP_HOST'].'/billingsofv1.01_dev/';
+$config['base_url']	= 'http://'.$_SERVER['HTTP_HOST'].'/billingsof_core/';
 
 /*
 |--------------------------------------------------------------------------
