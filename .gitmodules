@@ -1,15 +1,27 @@
+[submodule "application/modules/admin"]
+	path = application/modules/admin
+	url = https://github.com/MASTERPC-CIA/billingsof_admin.git
 [submodule "application/modules/ajustentrada"]
 	path = application/modules/ajustentrada
 	url = https://github.com/MASTERPC-CIA/billingsof_ajustentrada.git
 [submodule "application/modules/ajustesalida"]
 	path = application/modules/ajustesalida
 	url = https://github.com/MASTERPC-CIA/billingsof_ajustesalida.git
+[submodule "application/modules/cierrecaja"]
+	path = application/modules/cierrecaja
+	url = https://github.com/MASTERPC-CIA/billingsof_cierrecaja.git	
+[submodule "application/modules/common"]
+	path = application/modules/common
+	url = https://github.com/MASTERPC-CIA/billingsof_common.git		
 [submodule "application/modules/compras"]
 	path = application/modules/compras
 	url = https://github.com/MASTERPC-CIA/billingsof_compras.git
 [submodule "application/modules/contabilidad"]
 	path = application/modules/contabilidad
-	url = https://github.com/MASTERPC-CIA/billingsof_contabilidad.git	
+	url = https://github.com/MASTERPC-CIA/billingsof_contabilidad.git
+[submodule "application/modules/correcciones"]
+	path = application/modules/correcciones
+	url = https://github.com/MASTERPC-CIA/billingsof_correcciones.git	
 [submodule "application/modules/cotizacion"]
 	path = application/modules/cotizacion
 	url = https://github.com/MASTERPC-CIA/billingsof_cotizacion.git	
@@ -22,18 +34,33 @@
 [submodule "application/modules/factelectronica"]
 	path = application/modules/factelectronica
 	url = https://github.com/MASTERPC-CIA/billingsof_factelectronica.git	
+[submodule "application/modules/garantias"]
+	path = application/modules/garantias
+	url = https://github.com/MASTERPC-CIA/billingsof_garantias.git	
+[submodule "application/modules/install"]
+	path = application/modules/install
+	url = https://github.com/MASTERPC-CIA/billingsof_install.git		
 [submodule "application/modules/inventario"]
 	path = application/modules/inventario
 	url = https://github.com/MASTERPC-CIA/billingsof_inventario.git
+[submodule "application/modules/login"]
+	path = application/modules/login
+	url = https://github.com/MASTERPC-CIA/billingsof_login.git	
 [submodule "application/modules/nota_credito"]
 	path = application/modules/nota_credito
 	url = https://github.com/MASTERPC-CIA/billingsof_nota_credito.git	
 [submodule "application/modules/nota_credito_venta"]
 	path = application/modules/nota_credito_venta
 	url = https://github.com/MASTERPC-CIA/billingsof_nota_credito_venta.git
+[submodule "application/modules/servicios"]
+	path = application/modules/servicios
+	url = https://github.com/MASTERPC-CIA/servicios.git	
 [submodule "application/modules/stecnico"]
 	path = application/modules/stecnico
-	url = https://github.com/MASTERPC-CIA/billingsof_stecnico.git	
+	url = https://github.com/MASTERPC-CIA/billingsof_stecnico.git
+[submodule "application/modules/transferencias"]
+	path = application/modules/transferencias
+	url = https://github.com/MASTERPC-CIA/billingsof_transferencias.git	
 [submodule "application/modules/ventas"]
 	path = application/modules/ventas
 	url = https://github.com/MASTERPC-CIA/billingsof_ventas.git	
