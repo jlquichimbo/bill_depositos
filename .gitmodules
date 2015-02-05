@@ -1,1 +1,4 @@
 
+[submodule "application/modules/admin"]
+	path = application/modules/admin
+	url = https://github.com/MASTERPC-CIA/bill_admin.git
