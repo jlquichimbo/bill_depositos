@@ -68,3 +68,6 @@
 [submodule "application/modules/ndc_venta"]
 	path = application/modules/ndc_venta
 	url = http://eychamba@github.com/MASTERPC-CIA/bill_ndc_venta
+[submodule "application/modules/depositos"]
+	path = application/modules/depositos
+	url = http://eychamba@github.com/MASTERPC-CIA/bill_depositos.git
