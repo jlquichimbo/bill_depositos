@@ -12,7 +12,7 @@
 	url = https://github.com/MASTERPC-CIA/bill_cierrecaja.git	
 [submodule "application/modules/common"]
 	path = application/modules/common
-	url = https://github.com/MASTERPC-CIA/bill_common.git		
+	url = https://github.com/MASTERPC-CIA/bill_common.git
 [submodule "application/modules/compras"]
 	path = application/modules/compras
 	url = https://github.com/MASTERPC-CIA/bill_compras.git
@@ -24,46 +24,52 @@
 	url = https://github.com/MASTERPC-CIA/bill_correcciones.git	
 [submodule "application/modules/cotizacion"]
 	path = application/modules/cotizacion
-	url = https://github.com/MASTERPC-CIA/bill_cotizacion.git	
+	url = https://github.com/MASTERPC-CIA/bill_cotizacion.git
 [submodule "application/modules/cxc"]
 	path = application/modules/cxc
-	url = https://github.com/MASTERPC-CIA/bill_cxc.git	
+	url = https://github.com/MASTERPC-CIA/bill_cxc.git
 [submodule "application/modules/cxp"]
 	path = application/modules/cxp
 	url = https://github.com/MASTERPC-CIA/bill_cxp.git
 [submodule "application/modules/factelectronica"]
 	path = application/modules/factelectronica
-	url = https://github.com/MASTERPC-CIA/bill_factelectronica.git	
+	url = https://github.com/MASTERPC-CIA/bill_factelectronica.git
 [submodule "application/modules/garantias"]
 	path = application/modules/garantias
-	url = https://github.com/MASTERPC-CIA/bill_garantias.git	
+	url = https://github.com/MASTERPC-CIA/bill_garantias.git
 [submodule "application/modules/install"]
 	path = application/modules/install
-	url = https://github.com/MASTERPC-CIA/bill_install.git		
+	url = https://github.com/MASTERPC-CIA/bill_install.git
 [submodule "application/modules/inventario"]
 	path = application/modules/inventario
 	url = https://github.com/MASTERPC-CIA/bill_inventario.git
 [submodule "application/modules/login"]
 	path = application/modules/login
-	url = https://github.com/MASTERPC-CIA/bill_login.git	
+	url = https://github.com/MASTERPC-CIA/bill_login.git
 [submodule "application/modules/nota_credito"]
 	path = application/modules/nota_credito
-	url = https://github.com/MASTERPC-CIA/bill_nota_credito.git	
+	url = https://github.com/MASTERPC-CIA/bill_nota_credito.git
 [submodule "application/modules/nota_credito_venta"]
 	path = application/modules/nota_credito_venta
 	url = https://github.com/MASTERPC-CIA/bill_nota_credito_venta.git
 [submodule "application/modules/servicios"]
 	path = application/modules/servicios
-	url = https://github.com/MASTERPC-CIA/bill_servicios.git	
+	url = https://github.com/MASTERPC-CIA/bill_servicios.git
 [submodule "application/modules/stecnico"]
 	path = application/modules/stecnico
 	url = https://github.com/MASTERPC-CIA/bill_stecnico.git
 [submodule "application/modules/transferencias"]
 	path = application/modules/transferencias
-	url = https://github.com/MASTERPC-CIA/bill_transferencias.git	
+	url = https://github.com/MASTERPC-CIA/bill_transferencias.git
 [submodule "application/modules/ventas"]
 	path = application/modules/ventas
-	url = https://github.com/MASTERPC-CIA/bill_ventas.git	
+	url = https://github.com/MASTERPC-CIA/bill_ventas.git
 [submodule "application/modules/sms"]
 	path = application/modules/sms
-	url = https://github.com/MASTERPC-CIA/bill_sms.git	
+	url = https://github.com/MASTERPC-CIA/bill_sms.git
+[submodule "billingsof_installation"]
+	path = billingsof_installation
+	url = https://github.com/MASTERPC-CIA/billingsof_installation.git
+[submodule "install"]
+	path = install
+	url = https://github.com/MASTERPC-CIA/billingsof_installation.git
