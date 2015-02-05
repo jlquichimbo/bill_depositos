@@ -3,8 +3,14 @@
  * and open the template in the editor.
  */
 
- var main_path = $('#main_path').val(),
-     numdecimales = $('#numdecimales').val(),
+// var main_path = $('#main_path').val(),
+//     numdecimales = $('#numdecimales').val(),
+//     ivaporcent = $('#ivaporcent').val(),
+//     userid = $('#userid').val(),
+//     valorcero = 0;
+//     valorcero = valorcero.toFixed(numdecimales);
+     
+ var numdecimales = $('#numdecimales').val(),
      ivaporcent = $('#ivaporcent').val(),
      userid = $('#userid').val(),
      valorcero = 0;
@@ -126,8 +132,8 @@ $(function() {
     
     
 
-    ejectSubmitForms();
-    loadFormAjax();
+//    ejectSubmitForms();
+//    loadFormAjax();
 
     /*Obtener los modulos q se van a cargar*/        
     if ($('#modulesload').length){

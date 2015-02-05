@@ -10,15 +10,15 @@ function openLoadProductsPanel(event, elem ){
         return false;
     });
     
-    $(document).on('keyup', null, 'esc', function(e){
-        jspanel_lodaproducts.close();
-        return false;         
-    });
-    
-    $(document).on('keyup', null, 'f1', function(e){
-        open_loadprodpanel();
-        return false;         
-    });
+//    $(document).on('keyup', null, 'esc', function(e){
+//        jspanel_lodaproducts.close();
+//        return false;         
+//    });
+   
+//    $(document).on('keyup', null, 'f1', function(e){
+//        open_loadprodpanel();
+//        return false;         
+//    });
 }
 
 function open_loadprodpanel(){
@@ -267,88 +267,46 @@ function recalcular_precios(){
 
    });
 }
-
-    function autosugest_client(){
-         $('#client_name').typeahead({
-                    template:['<div class="media br-bottom">',
-                          '<div class="media-body"><h4 class="media-heading">{{value}}</h4>',
-                          '<p>{{ci}}<p></div></div>'
-                                  ].join(''),
-                        engine: Hogan,
-                        remote: main_path+'cxc/client/autosugest/%QUERY',
-                        minLength: 4,
-                        limit: 10,
-                })
-                .on('typeahead:selected', function(event, datum) {
-                    var url = main_path+'ventas/index/findByCI';
-                        $.ajax({
-                            type: "POST",
-                            url: url,
-                            data: { ci: datum.ci,id: datum.id },       
-                            success: function(html){
-                                $('#cotizacionescart').html(html);                    
-                            },
-                            error: function(){
-                                alertaError("Error!! No se pudo alcanzar el archivo de proceso", "Error!!");
-                            }              
-                        });                  
-         });
-
-        $('#client_ci_autosuggest').typeahead({
-                    template:['<div class="media br-bottom">',
-                          '<div class="media-body"><h4 class="media-heading">{{value}}</h4>',
-                          '<p>{{client_name}}<p></div></div>'
-                                  ].join(''),
-                        engine: Hogan,
-                        remote: main_path+'cxc/client/autosugest_by_ci/%QUERY',
-                        minLength: 4,
-                        limit: 10,
-        })
-    }
     
-    function autosugest_product_name(){
-         $('#product_name_autosug').typeahead({
-                    template:['<div class="media br-bottom">',
-                          '<div class="media-body"><h4 class="media-heading">{{value}}</h4>',
-                          '<p>{{id}}<p></div></div>'
-                                  ].join(''),
-                        engine: Hogan,
-                        remote: main_path+'ventas/product/autosugest_by_name/%QUERY',
-                        minLength: 4,
-                        limit: 10,
-                })
-                .on('typeahead:selected', function(event, datum) {
-                    
-                    var url = main_path+'ventas/index/insertprod';
-                        $.ajax({
-                            type: "POST",
-                            url: url,
-                            data: { id: datum.id,qty: 1 },       
-                            success: function(html){
-                                $('#cotizacionescart').html(html);                    
-                            },
-                            error: function(){
-                                alertaError("Error!! No se pudo alcanzar el archivo de proceso", "Error!!");
-                            }              
-                        });  
-                        $('#product_name_autosug').val('');
-         });
+/* refresca la lista de productos despues de insertar uno nuevo */
+    var refresh_cart_insert_prod = function (datum) {
+        var url = main_path+'ventas/index/insertprod/time/'+$.now();
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: { id: datum.ci, qty: 1 },       
+                success: function(html){
+                    $('#cotizacionescart').html(html);                    
+                },
+                error: function(){
+                    alertaError("Error!! No se pudo alcanzar el archivo de proceso", "Error!!");
+                }              
+            });  
+            $('#product_name_autosug').val('');
+    };
+    
+    var refresh_cart_load_client = function (datum) {
+        var url = main_path+'ventas/index/findByCI/time/'+$.now();
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: { ci: datum.ci,id: datum.id },       
+                success: function(html){
+                    $('#cotizacionescart').html(html);                    
+                },
+                error: function(){
+                    alertaError("Error!! No se pudo alcanzar el archivo de proceso", "Error!!");
+                }              
+            });
+    };
 
-        $('#client_ci_autosuggest').typeahead({
-                    template:['<div class="media br-bottom">',
-                          '<div class="media-body"><h4 class="media-heading">{{value}}</h4>',
-                          '<p>{{client_name}}<p></div></div>'
-                                  ].join(''),
-                        engine: Hogan,
-                        remote: main_path+'cxc/client/autosugest_by_ci/%QUERY',
-                        minLength: 4,
-                        limit: 10,
-        })
-    }
+//function venta(){
 
-function venta(){
-     autosugest_product_name();
-     autosugest_client();
+$(function() {
+     $.autosugest_search('#product_name_autosug');
+     $.autosugest_search('#client_name');
+     $.autosugest_search('#client_ci_autosuggest');
+//     autosugest_client();
      forma_pago_required();
      recalcular_precios();
      control_price_min();
@@ -356,9 +314,6 @@ function venta(){
      change_bodega();
      openLoadProductsPanel('click','#loadproductsviewbtn');
     
-//    $.loadAjaxPanel('#loadproductsviewbtn', { width: '99%', height: 550 }, {top: 30, left: 5});
-    
-    $.loadAjaxPanel();
     $.loadAjaxPanel('#ajaxpanelbtnproducts', { width: '99%', height: 550 }, {top: 30, left: 5});
     $.loadAjaxPanel('#ajaxpanelbtnproductget', { width: '99%', height: 550 }, {top: 30, left: 5});    
     $.loadAjaxPanel('#ajaxpanelbtnproductsload', { width: '99%', height: 550 }, {top: 30, left: 5});    
@@ -368,11 +323,14 @@ function venta(){
     recdescporcent("#desdporcent",'#descval');
     
     recdescval('#recval',"#recporcent");
-    recdescval('#descval',"#desdporcent");
+    recdescval('#descval',"#desdporcent"); 
+    
+});
+
 
 //    window.onbeforeunload = confirmExit;
 //    function confirmExit()
 //    {
 //      return "Ha intentado salir de esta pagina. Si ha realizado algun cambio en los campos sin hacer clic en el boton Guardar, los cambios se perderan. Seguro que desea salir de esta pagina? ";
 //    }
-}
+//}

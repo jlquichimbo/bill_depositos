@@ -35,24 +35,28 @@
 
 // var main_path = $('#main_path').val();
 //alert(main_path);
+// var main_path = $('#main_path').val(),
+//     numdecimales = $('#numdecimales').val(),
+//     ivaporcent = $('#ivaporcent').val(),
+//     userid = $('#userid').val(),
+//     valorcero = 0;
+//     valorcero = valorcero.toFixed(numdecimales);
+
  var main_path = $('#main_path').val(),
      numdecimales = $('#numdecimales').val(),
      ivaporcent = $('#ivaporcent').val(),
      userid = $('#userid').val(),
      valorcero = 0;
      valorcero = valorcero.toFixed(numdecimales);
-var optprint1 = { debug: false, importCSS: true, printContainer: true, loadCSS: main_path+"/css/allstyles.css", removeInline: false };
+
+var optprint1 = { debug: false, importCSS: true, printContainer: true, loadCSS: main_path+"resources/css/allstyles.css", removeInline: false };
         function printelem(){
             $(document).on("click", "#printbtn", function(event){
+                alert(main_path+"resources/css/allstyles.css");
                 var elem = $(this).attr('data-target');
-                $("#"+elem).printThis({
-                    debug: false,              // show the iframe for debugging
-                    importCSS: true,           // import page CSS
-                    printContainer: true,      // grab outer container as well as the contents of the selector
-                    loadCSS: main_path+"resources/css/allstyles.css", // path to additional css file
-                    pageTitle: "",             // add title to print page
-                    removeInline: false        // remove all inline styles from print elements
-                });        
+                $("#"+elem).printThis(                        
+                    optprint1
+                );        
                 
             });
         }
@@ -214,7 +218,7 @@ function desbloquearPantalla(){
 
 function ejectSubmitForms(){
     $(document).on("click", "#jsonresponsebtn", function(e) {
-        bloquearPantalla()
+        bloquearPantalla();
         var form = $(this).parents('form');
 //        $(form).bt_validate();
         $(form).ajaxForm({dataType:  'json', success: getResponseNewAction});
@@ -305,37 +309,65 @@ function ejectSubmitFormsHtmlOutput2(elem, outputelem, event){
 function remove_wait_msg(){
     $('#'+outputelem).next('div #msg_wait').remove()
 }
+
+function processJson(data) { 
+    // 'data' is the json object returned from the server 
+//    alert(data.html); 
+    $('#clientslistout').html(data.html);
+}
+
 function loadFormAjax(){
-    $(document).on("click", '#ajaxformbtn', function(e) {
-        var outputelem = $(this).attr('data-target');
-    //$("#"+outputelem).html('Espere...');
-    $("#"+outputelem).prepend('<div id="msg_wait"><hr class="clr">Espere...</div>');
+    $(document).on("click", '#ajax_json_btn', function(e) {
+//        $(this).attr('disabled','disabled').removeClass('btn-primary').addClass('btn-default');
+//        var outputelem = $(this).attr('data-target');
+//    $("#"+outputelem).html('<div id="msg_wait"><hr class="clr"><img src="'+main_path+'resources/img/loading83.gif" alt="Eespere.."/></div>');
         var form = $(this).parents('form');
 //                        alert('hola');
-        $(form).ajaxForm(
-        {
-            target: "#"+outputelem,
-//            success : $('#'+outputelem).children('#msg_wait').remove()
-//            error: $("#"+outputelem).html('<strong class="text-danger">Aparentemente ha ocurrido un problema, contacte con el administrador <span class="glyphicon glyphicon-remove"></span></strong>')
-//            error: alertaError('No se ha podipo completar la petici&oacute;n')
+        $(form).ajaxForm({ 
+            // dataType identifies the expected content type of the server response 
+            dataType:  'json', 
+
+            // success identifies the function to invoke when the server response 
+            // has been received 
+            success:   processJson 
+        }); 
+    });
+    
+    $(document).on("click", '#ajaxformbtn', function(e) {
+        var disabled = true;
+        var outputelem = $(this).attr('data-target');
+        var nodisabled = $(this).attr('no-disabled');
+     
+        if(nodisabled != null && nodisabled != 'undefined' && nodisabled != '' ){
+            disabled = false;
+        }
+        if(disabled){
+            $(this).attr('disabled','disabled').removeClass('btn-primary').addClass('btn-default');            
+        }        
+        $("#"+outputelem).html('<div id="msg_wait"><hr class="clr"><img src="'+main_path+'resources/img/loading83.gif" alt="Eespere.."/></div>');
+            var form = $(this).parents('form');
+            $(form).ajaxForm(
+            {
+                target: "#"+outputelem,
+            });
         });
-    });    
     
     $(document).on("click", '#ajaxformurl', function(e) {
-    var outputelem = $(this).attr('data-target'),
-        url = $(this).attr('data-url');
-    var loadingbar = '<div class="progress"> <div class="progress-bar progress-bar-striped active"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%"> <span class="sr-only">45% Complete</span> </div> </div>';
-    $("#"+outputelem).html(loadingbar);        
-        var form = $(this).parents('form');
-        $(form).ajaxForm({
-//            beforeSubmit : validateNewBoleto,
-            url: url,
-            target: "#"+outputelem 
-        });
-//        return false;
+        $(this).attr('disabled','disabled').removeClass('btn-primary').addClass('btn-default');
+        var outputelem = $(this).attr('data-target'),
+            url = $(this).attr('data-url');
+        var loadingbar = '<div class="progress"> <div class="progress-bar progress-bar-striped active"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%"> <span class="sr-only">45% Complete</span> </div> </div>';
+        $("#"+outputelem).html(loadingbar);        
+            var form = $(this).parents('form');
+            $(form).ajaxForm({
+    //            beforeSubmit : validateNewBoleto,
+                url: url,
+                target: "#"+outputelem 
+            });
     });    
     
     $(document).on("click", '#ajaxformbtn2', function(e) {
+        $(this).attr('disabled','disabled').removeClass('btn-primary').addClass('btn-default');        
         var form = $(this).parents('form'),outputelem = $(this).attr('data-target');
         if(outputelem != '' && outputelem != 'undefined' || outputelem != null){
             $("#"+outputelem).html('<img alt="Espere..." src="'+main_path+'/css/img/loading2.gif'+'">Espere...');
@@ -347,6 +379,7 @@ function loadFormAjax(){
     }); 
     
     $(document).on("click", "#ajaxformbtn3", function(e) {
+        $(this).attr('disabled','disabled').removeClass('btn-primary').addClass('btn-default');             
         var objThis = $(this);
         var outputelem = $(this).attr('data-target');        
         bootbox.confirm("<h2><span class='glyphicon glyphicon-question-sign'></span>&nbsp;Seguro que desea realizar esta operacion?</h2> <h4 class='text-info'>No se podra anular los cambios</h4>", function(result) {
@@ -651,15 +684,46 @@ $.show_hide_html = function(){
 }
 
 
-//$.show_hide_html = function(){
-//    $(document).on("click", "#show_hide_btn", function(e) {
-//        var outputelem = $(this).attr('data-target');
-//        
-//        if( $("[id*="+outputelem+"]").is(":visible") ){
-//            $(outputelem).hide();
-//        }else{
-//            $(outputelem).show();
-//        }
-//    });     
-//}
+    $(function() {
+        $(document).on("mousedown", "input.number", function(e) {
+            $(".number").numeric();
+        });
+        $(document).on("mousedown", "input.integer", function(e) {
+            $(".integer").numeric(false, function() {this.value = "1";this.focus();});
+        });
+        $(document).on("mousedown", "input.positive", function(e) {
+            $(".positive").numeric({negative: false}, function() {this.value = "";this.focus();});
+        });
+        $(document).on("mousedown", "input.positive-integer", function(e) {
+            $(".positive-integer").numeric({decimal: false, negative: false}, function() {this.value = "";this.focus();});
+        });        
+        
+        $.load_datepicker();
+        $.loadAjaxPanel();
+        loadFormAjax();
+        printelem();  
+        
+    });
+    
+//    $( document ).ajaxStart(function() {
+//        $('#ajaxformbtn').attr('disabled','disabled').removeClass('btn-primary').addClass('btn-default');
+//        $('#ajaxformbtn2').attr('disabled','disabled').removeClass('btn-primary').addClass('btn-default');
+//        $('#ajaxformbtn3').attr('disabled','disabled').removeClass('btn-primary').addClass('btn-default');
+//        $('#ajaxformurl').attr('disabled','disabled').removeClass('btn-primary').addClass('btn-default');
+//    });
+    
+    $( document ).ajaxStop(function() {
+        $('button#ajaxformbtn').each(function() {
+            $(this).removeAttr('disabled').removeClass('btn-default').addClass('btn-primary');
+        });
+        $('button#ajaxformbtn2').each(function() {
+            $(this).removeAttr('disabled').removeClass('btn-default').addClass('btn-primary');
+        });
+        $('button#ajaxformbtn3').each(function() {
+            $(this).removeAttr('disabled').removeClass('btn-default').addClass('btn-primary');
+        });
+        $('button#ajaxformurl').each(function() {
+            $(this).removeAttr('disabled').removeClass('btn-default').addClass('btn-primary');
+        });
+    });
 /*FIN funciones de archivo anterior llamado comunesbillingsoft.js*/

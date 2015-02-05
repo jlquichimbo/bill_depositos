@@ -110,7 +110,6 @@
         printelem();
         $.loadAjaxPanel();
         loadFormAjax();   
-        $.load_datepicker();
         $.loadAjaxPanel('#loadproductsviewbtn',{ width: '99%', height: 300 },{top: 35, left: 5});
         $.loadAjaxPanel('#loadsearchprovbtn', { width: '99%', height: 300 }, {bottom: 0, left: 5});            
     });
