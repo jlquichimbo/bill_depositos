@@ -50,9 +50,6 @@
 [submodule "application/modules/nota_credito"]
 	path = application/modules/nota_credito
 	url = http://eychamba@github.com/MASTERPC-CIA/bill_nota_credito.git
-[submodule "application/modules/nota_credito_venta"]
-	path = application/modules/nota_credito_venta
-	url = http://eychamba@github.com/MASTERPC-CIA/bill_nota_credito_venta.git
 [submodule "application/modules/servicios"]
 	path = application/modules/servicios
 	url = http://eychamba@github.com/MASTERPC-CIA/bill_servicios.git
