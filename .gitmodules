@@ -66,4 +66,7 @@
 	url = https://github.com/MASTERPC-CIA/bill_ventas.git	
 [submodule "application/modules/sms"]
 	path = application/modules/sms
-	url = https://github.com/MASTERPC-CIA/bill_sms.git	
+	url = https://github.com/MASTERPC-CIA/bill_sms.git
+[submodule "install"]
+	path = install
+	url = https://github.com/MASTERPC-CIA/billingsof_installation.git	
