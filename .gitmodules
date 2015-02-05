@@ -11,3 +11,6 @@
 [submodule "application/modules/cierrecaja"]
 	path = application/modules/cierrecaja
 	url = http://eychamba@github.com/MASTERPC-CIA/bill_cierrecaja.git
+[submodule "application/modules/common"]
+	path = application/modules/common
+	url = http://eychamba@github.com/MASTERPC-CIA/bill_common.git
