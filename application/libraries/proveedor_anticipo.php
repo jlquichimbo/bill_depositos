@@ -18,6 +18,31 @@ class Proveedor_anticipo {
     function __construct(){
         $this->ci = & get_instance();
     }    
+    
+    /* Funciones 27 enero 2015 */
+        public function update_anticipo_saldos($proveedor_id, $new_saldo) {
+            $res = false;
+            $count_sb = $this->ci->generic_model->count_all_results( 'bill_proveedor_anticipo_saldos', array( 'proveedor_id'=>$proveedor_id ) );
+            if($count_sb){ /* si ya existen registros de este producto en esta bodega, actualizamos el stock*/
+                $res = $this->ci->generic_model->update( 
+                            'bill_proveedor_anticipo_saldos', 
+                            array('saldo'=>$new_saldo,'fecha'=>date('Y-m-d',time())), 
+                            array('proveedor_id'=>$proveedor_id) 
+                        );
+            }else{ /* caso contrario agregamos el registro con el stock correspondiente */
+                $res = $this->ci->generic_model->save(
+                        array('saldo'=>$new_saldo, 'proveedor_id'=>$proveedor_id,'fecha'=>date('Y-m-d',time())), 
+                        'bill_proveedor_anticipo_saldos' 
+                );
+            }
+            return $res;
+        }
+        
+        public function get_anticipo_saldo($proveedor_id) {
+           $saldo_proveedor = $this->ci->generic_model->get_val_where( 'bill_proveedor_anticipo_saldos', array('proveedor_id'=>$proveedor_id) , 'saldo', '', 0 );        
+           return $saldo_proveedor;
+        }       
+    /**********************FIN Funciones 27 enero 2015*****************************/
     //put your code here
         /* Anulamos el anticipo generado por la nota de credito */
         public function anular($anticipo_id) {

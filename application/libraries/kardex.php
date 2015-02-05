@@ -17,17 +17,18 @@ class kardex {
     
     function __construct(){
         $this->ci = & get_instance();
-    }    
+    }
     
-    /*
+    /* 
      * Obtenemos el nuevo stock (kardex) por producto
      * $tipo : add=>suma, diff=>resta
-     */
+    */
     public function get_new_kardex_ultimo_add($product_id, $qty) {
         $kardex_ultimo = $this->ci->generic_model->get_val_where('bill_kardex', array('producto_id'=>$product_id), 'kardex_ultimo', null, 0);
             $new_kardex_ultimo = $kardex_ultimo + $qty;                
         return $new_kardex_ultimo;
     }
+    
     public function get_new_kardex_ultimo_diff($product_id, $qty) {
         $kardex_ultimo = $this->ci->generic_model->ci->get_val_where('bill_kardex', array('producto_id'=>$product_id), 'kardex_ultimo', null, 0);
             $new_kardex_ultimo = $kardex_ultimo - $qty;                
