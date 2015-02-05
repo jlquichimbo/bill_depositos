@@ -65,3 +65,6 @@
 [submodule "application/modules/sms"]
 	path = application/modules/sms
 	url = http://eychamba@github.com/MASTERPC-CIA/bill_sms.git
+[submodule "application/modules/ndc_venta"]
+	path = application/modules/ndc_venta
+	url = http://eychamba@github.com/MASTERPC-CIA/bill_ndc_venta
