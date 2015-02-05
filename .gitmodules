@@ -58,6 +58,9 @@ url = https://github.com/MASTERPC-CIA/bill_servicios.git
 [submodule "application/modules/stecnico"]
 path = application/modules/stecnico
 url = https://github.com/MASTERPC-CIA/bill_stecnico.git
+[submodule "application/modules/transferencias"]
+path = application/modules/transferencias
+url = https://github.com/MASTERPC-CIA/bill_transferencias.git
 [submodule "application/modules/ventas"]
 path = application/modules/ventas
 url = https://github.com/MASTERPC-CIA/bill_ventas.git
