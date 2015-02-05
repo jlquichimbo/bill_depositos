@@ -14,3 +14,9 @@
 [submodule "application/modules/common"]
 	path = application/modules/common
 	url = http://eychamba@github.com/MASTERPC-CIA/bill_common.git
+[submodule "application/modules/compras"]
+	path = application/modules/compras
+	url = http://eychamba@github.com/MASTERPC-CIA/bill_compras.git
+[submodule "application/modules/contabilidad"]
+	path = application/modules/contabilidad
+	url = http://eychamba@github.com/MASTERPC-CIA/bill_contabilidad.git
