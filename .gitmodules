@@ -8,3 +8,6 @@
 [submodule "application/modules/ajustesalida"]
 	path = application/modules/ajustesalida
 	url = http://github.com/MASTERPC-CIA/bill_ajustesalida.git
+[submodule "application/modules/cierrecaja"]
+	path = application/modules/cierrecaja
+	url = http://eychamba@github.com/MASTERPC-CIA/bill_cierrecaja.git
